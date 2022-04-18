@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        border: 1px solid black;
+    }
+    th,td{
+        border: 1px solid black;
+    }
+
+</style>
+<body>
+    <div>
+        <input type="text" id="name"placeholder="name">
+    </div>
+    <div>
+        <input type="text" id="age"placeholder="age">
+    </div>
+    <div>
+        <input type="text" id="science"placeholder="science">
+    </div>
+    <div>
+
+        <input type="text" id="english"placeholder="english">
+    </div>
+    <div>
+        <input type="text" id="maths"placeholder="maths">
+    </div>
+    <div>
+        <button id="submitbtn">clickme</button>  
+  </div>
+  <table>
+      <th>name</th>
+      <th>age</th>
+      <th>science</th>
+      <th>english</th>
+      <th>maths</th>
+      <th>total</th>
+
+  </table>
+    
+</body>
+</html>
+<script>
+    var btn=document.getElementById("submitbtn")
+    btn.addEventListener('click',validate)
+    function deletebtn(e){
+        e.target.parentNode.remove()
+    }
+    function createrow(name,age,science,english,maths,totalmarks) {
+   
+        var row=document.createElement("tr")
+        var col1=document.createElement("td")
+        col1.textContent=name
+        var col2=document.createElement("td")
+        col2.textContent=age
+        var col3=document.createElement("td")
+        col3.textContent=science
+        var col4=document.createElement("td")
+        col4.textContent=english
+        var col5=document.createElement("td")
+        col5.textContent=maths
+        var col6=document.createElement("td")
+        col6.textContent=totalmarks
+        var btn=document.createElement("button")
+        btn.textContent="delete"
+        btn.addEventListener('click',deletebtn)
+        row.append(col1,col2,col3,col4,col5,col6,btn)
+        var table=document.querySelector('table')
+        table.appendChild(row)
+    }
+    function validate(){
+    
+        var name= document.getElementById("name").value
+        var age= document.getElementById("age").value
+        var science= document.getElementById("science").value
+        var english= document.getElementById("english").value
+        var maths= document.getElementById("maths").value
+        var totalmarks=Number(science)+Number(english)+Number(maths)
+        console.log(totalmarks)
+        createrow(name,age,science,english,maths,totalmarks) 
+    }
+
+</script>

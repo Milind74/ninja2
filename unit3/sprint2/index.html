@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Notes App</title>
+    <style>
+       *{
+            margin: 0;
+            padding:0;
+            font-family: sans-serif;
+            
+        }
+        #container{
+    
+        width: 100%;
+        height: auto;
+        background-color: black;
+
+        }
+        #navbar{
+        display: flex;
+        width: 100%;
+        height: 40px;
+        border: 1px solid black;
+        gap: 20px;
+        background-color: grey;
+        color: white;
+        
+
+        }
+        #navbar>h2{
+           margin-top: 10px;
+        }
+        #navbar>h1{
+           margin-top: 5px;
+           margin-left: 40px;
+        }
+        #navbar>button{
+            width: 100px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        #result{
+            width: 400px;
+            margin: auto;
+            margin-top: 20px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="navbar">
+    <h1>Notes App:</h1>
+  <h2>SELECT DAY:</h2>
+        <select id="select">
+         
+            <option value="day_1">Day 1</option>
+            <option value="day_2">Day 2</option>
+            <option value="day_3">Day 3</option>
+            <option value="day_4">Day 4</option>
+            <option value="day_5">Day 5</option>
+            <option value="day_6">Day 6</option>
+            <option value="day_7">Day 7</option>
+            <option value="day_8">Day 8</option>
+            <option value="day_9">Day 9</option>
+            <option value="day_10">Day 10</option>
+            <option value="day_11">Day 11</option>
+            <option value="day_12">Day 12</option>
+            <option value="day_13">Day 13</option>
+            <option value="day_14">Day 14</option>
+            <option value="day_15">Day 15</option>
+            <option value="day_16">Day 16</option>
+        </select>
+     
+            <h2>ADD NOTES:</h2> <input type="text" id="input" placeholder="Add Notes" style="width:500px">
+            <button onclick="addnotes(event)">Add Notes</button>
+        
+        <select id="shownotes">
+            <label>Select Day: </label>
+            <option value="day_1">Day 1</option>
+            <option value="day_2">Day 2</option>
+            <option value="day_3">Day 3</option>
+            <option value="day_4">Day 4</option>
+            <option value="day_5">Day 5</option>
+            <option value="day_6">Day 6</option>
+            <option value="day_7">Day 7</option>
+            <option value="day_8">Day 8</option>
+            <option value="day_9">Day 9</option>
+            <option value="day_10">Day 10</option>
+            <option value="day_11">Day 11</option>
+            <option value="day_12">Day 12</option>
+            <option value="day_13">Day 13</option>
+            <option value="day_14">Day 14</option>
+            <option value="day_15">Day 15</option>
+            <option value="day_16">Day 16</option>
+        < h/select>
+    <button onclick="shownotes(event)">Show Notes</button>
+
+</div>
+</div>
+</div>
+    <div id="result"></div>
+</body>
+
+</html>
+<script type="module">
+     import navbar from "./components/navbar.js";
+    
+    document.body.innerHTML = navbar()
+
+
+    var parent = document.getElementById('result')
+
+    function addnotes(e) {
+        e.preventDefault()
+
+        let notes = document.getElementById('input').value
+        var day = document.getElementById('select').value
+
+        let arr = [];
+        if (arr == null) {
+            localStorage.setItem(arr)
+        } else {
+            localStorage.setItem(day, JSON.stringify(notes))
+        }
+    }
+
+    function shownotes(e) {
+        e.preventDefault();
+        parent.innerHTML=null
+
+        var day_notes = document.getElementById('shownotes').value
+        console.log('day_notes:', day_notes)
+        let data = JSON.parse(localStorage.getItem(`${day_notes}`))
+        console.log('data:', data)
+
+        let p = document.createElement('p')
+        p.innerHTML = data
+        parent.append(p)
+    }
+
+</script>

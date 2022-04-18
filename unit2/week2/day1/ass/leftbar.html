@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #id1{
+                display: grid;
+                grid-gap:25px;
+                grid-template: "box1 box1"
+                                "box2 box3"
+                                "box2 box3 "
+        }
+        #box1{
+                grid-area: box1; 
+                background-color: yellow;               
+                height: 60px;
+        }
+        #box2{
+                height: 200px;
+                grid-area: box2; 
+                background-color:lightgreen;               
+            
+        }
+        #box3{
+                height: 200px;
+                grid-area: box3; 
+                background-color:teal;               
+            
+        }
+
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="id1">
+        <div id="box1"></div>
+        <div  id="box2"></div>
+        <div  id="box3"></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: skyblue;
+            height: 200px;
+            border-radius: 10px;
+            width: 200px;
+        }
+        button{
+            background-color: brown;
+            margin-left: 60%;
+            margin-top: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="id1">
+        <button id="id2">submit</button>
+    </div>
+    
+    <script>
+        var div =document.getElementById("id1")
+        var btn=document.getElementById("id2")
+        function set(){
+          btn.style.background="green"
+          div.style.background="pink"
+
+         }
+         function back(){
+          btn.style.background="brown"
+          div.style.background="skyblue"
+
+         }
+         div.addEventListener("mouseover",set)
+         div.addEventListener("mouseleave",back)
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News App3</title>
+    <style>
+      body {
+        font-weight: bolder;
+        font-size: 20px;
+      }
+      #div1 {
+        background-color: antiquewhite;
+        margin: 20px;
+        padding: 10px;
+      }
+      .navbar {
+        width: 98vw;
+        height: 50px;
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: black;
+      }
+      .button {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        margin-top: 5px;
+        margin-right: 20px;
+        background-color: black;
+        color: chartreuse;
+        border: 1px solid white;
+      }
+      #buttons1 {
+        border: 10px solid white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <button onclick="showButtons(1)" id="button1">Search</button>
+      <input type="text" id="search" />
+    </div>
+
+    <h1 style="text-align: center; color: cadetblue">
+      ------Top News Articles------
+    </h1>
+    <div id="data"></div>
+
+    <div id="buttons" style="width: 300px; margin: auto"></div>
+  </body>
+</html>
+
+<script>
+  //fetch the data
+
+  //show the button
+
+  //7158c12ece884b5ab9c7e0858fafb6b6
+
+  var parent = document.getElementById("data");
+
+  async function getData() {
+    var search = document.getElementById("search").value;
+    try {
+      let res = await fetch(
+        `https://newsapi.org/v2/everything?q=${search}&sortBy=popularity&apiKey=7c89e7d76ba44e73b89697d87b5d3c2f`
+      );
+      let data1 = await res.json();
+      data = data1.articles;
+      console.log(data)
+      return data;
+    } catch (e) {
+      console.log("e:", e);
+    }
+  }
+
+  var data;
+
+  async function main() {
+    data = await getData();
+  }
+
+  
+  function showButtons(index) {
+    console.log(index);
+    let buttons_div = document.getElementById("buttons");
+    buttons_div.innerHTML = null;
+    let original_id = index;
+
+    index = index + 1;
+
+    if (index <= 6) {
+      index = 6;
+    }
+
+    for (var i = index - 5; i <= index + 4; i++) {
+      let button = document.createElement("button");
+      button.style.width = "30px";
+      button.innerText = i;
+      button.setAttribute("id", `${i}`);
+      button.onclick = showData;
+      buttons_div.appendChild(button);
+    }
+    let btn = document.getElementById(original_id);
+    btn.style.backgroundColor = "olive";
+    btn.style.color = "white";
+    main();
+  }
+
+  //showing
+  function showData() {
+    let id = Number(this.id);
+    let num = id - 1;
+
+    let data1 = data.slice(5 * num, (num + 1) * 5);
+    console.log(data1);
+    parent.innerHTML = null;
+
+    data1.forEach(function (el) {
+      let div = document.createElement("div");
+      div.setAttribute("id", "div1");
+      let p = document.createElement("p");
+      p.innerText = `Title: ${el.title}`;
+      p.style.textAlign = "center";
+      let p1 = document.createElement("p");
+      p1.innerText = `Description:${el.description}`;
+      p1.style.textAlign = "center";
+
+      div.append(p, p1);
+
+      parent.append(div);
+    });
+    showButtons(id);
+  }
+
+</script>

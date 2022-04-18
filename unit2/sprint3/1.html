@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #bo{
+            width: 20%;
+        }
+        #dis{
+            width: 80%;
+        }
+       
+        #form{
+            width: 150px;
+            float: left;
+            margin-right: 20px;
+            display:grid;
+            gap: 20px;
+            text-align:center;
+            padding: 5%;
+        }
+        #items{
+         display: flex;
+            width: 150px;
+            /* justify-content: space; */
+            flex-direction: row;
+            margin-left: 10%;
+             gap :20px;
+             padding: 5%;
+             text-align: center;
+            
+        }
+        .box{
+            display: flex;
+            flex-flow: column; 
+            float: left;
+            grid-gap: 10px;
+            width:800px ;
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+            width: 200px;
+        }
+        button{
+            cursor: pointer;
+            transition: 0.5s;
+
+
+        }
+        button:hover{
+            background-color:white;
+            color: black;
+            transition: 0.5s;
+            border: 1px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="bo">
+
+    <div id="form">
+        <div> <input type="text"id="name"placeholder="name"></div>
+        <div> <input type="number"id="price"placeholder="price"></div>
+        <div> <input type="text"id="des"placeholder="description"></div>
+        <div> <input type="number"id="estimate"placeholder="estimated delivery"></div>
+        <div> <input type="url"id="img"placeholder="imgurl(option)"></div>
+        <div><button id="add">add product</button></div>
+
+    </div>
+    </div>
+    <div id="dis">
+        <div id="items">
+
+    </div>
+    </div>
+
+    
+    <!-- </div> -->
+</body>
+</html>
+<script>
+    var btn=document.getElementById("add")
+    btn.addEventListener('click',validation)
+    function validation(){
+        var name=document.getElementById('name').value
+        console.log(name)
+        var price=document.getElementById('price').value
+        console.log(price)
+        var des=document.getElementById('des').value
+        console.log(des)
+        var estimate=document.getElementById('estimate').value
+        console.log(estimate)
+        var imgurl=document.getElementById('img').value
+        console.log(imgurl)
+
+        createpage(name,price,des,estimate,imgurl)
+        }
+        function createpage(name,price,des,estimate,imgurl){
+           var parent= document.getElementById("items")
+            var div=document.createElement(div)
+            div.setAttribute('class','box')
+            //name
+            var col1=document.createElement("td")
+            col1.textContent=name
+            div.appendChild(col1)
+            parent.appendChild(div)
+            //price
+            var col2=document.createElement("td")
+            col2.textContent=price
+            div.appendChild(col2)
+            parent.appendChild(div)
+            //des
+            var col3=document.createElement("td")
+            col3.textContent=des
+            div.appendChild(col3)
+            parent.appendChild(div)
+            //estim
+            var col4=document.createElement("td")
+            col4.textContent=estimate
+            div.appendChild(col4)
+            parent.appendChild(div)
+            //url
+            var col5=document.createElement("td")
+            col4.textContent=imgurl
+            div.appendChild(col5)
+            parent.appendChild(div)
+           //btn
+            var delet=document.createElement('button')
+            delet.textContent="Remove"
+            delet.addEventListener('click',deletebtn)
+            div.appendChild(delet)
+            parent.appendChild(div)
+            //btn
+            var update=document.createElement('button')
+            update.textContent="update"
+            update.addEventListener('click',updatebtn)
+            div.appendChild(update)
+            parent.appendChild(div)
+            
+            function updatebtn(){
+            var price=document.getElementById("price").value;
+            var new_price=prompt("enter price")
+            col2.textContent=new_price
+
+                
+        }
+        function deletebtn(e){
+            e.target.parentNode.remove()
+        }
+        }
+
+
+
+
+        
+    // }
+</script>

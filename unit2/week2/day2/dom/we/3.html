@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Practise Creators</title>
+    </head>
+    <body>
+        <div id="headings">
+        </div>
+        <div id="cont">
+        </div>
+        <ul id="vikings">
+            <li>Priyanshu</li>
+        </ul>
+        <button onclick="createh1()">Create H1</button>
+        <button onclick="createh3()">Create 2 H3</button>
+        <button onclick="createdivs()">Create DIVS</button>
+        <button onclick="addstudent()">Add Students</button>
+        <button onclick="addp()">Add Copyright</button>
+      
+        <script>
+        var students = ['Ajay','Akshay','Anusha','Chandrashekhara','Haren','Hasaan','Mahesh','Mousumi','Pavan','Rahul','Sumanta','Venkatesh','Vetrival','Vijayendra'];
+        function createh1(){
+            var h1=document.createElement('h1')
+            h1.textContent="Masai"
+            var parent=document.getElementById("headings")
+            parent.append(h1)
+            }
+            function createh3(){
+            var h3a=document.createElement('h3')
+            h3a.textContent=" A Transformation in education!"
+            var h3b=document.createElement('h3')
+            h3b.textContent="and learn to earn,pay when you get"
+            var parent=document.getElementById("headings")
+            parent.append(h3a)
+            parent.append(h3b)
+            }
+            function createdivs(){
+            var parent=document.getElementById("cont")
+            for(i=0;i<=10;i++){
+            var p=document.createElement('p')
+            p.textContent="Content"+i
+            parent.append(p)
+            }
+        }
+        function addstudent(){
+            var parent=document.getElementById("vikings")
+            for(i=0;i<students.length;i++){
+            var studentli=document.createElement("li")
+            studentli.textContent=students[i]
+            parent.append(studentli)
+            }
+        }
+        function addp(){
+             var item=document.createElement("p")
+             item.textContent="@masai 2019"
+             var body=document.body
+            var btn=document.querySelector('button')
+            body.insertBefore(item,btn)
+            }
+
+
+       </script>
+    </body>
+</html>

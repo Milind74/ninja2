@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        #head{
+            /* width: 100%; */
+            display: grid;
+            background-color: purple;
+            grid-template:  "box1  box3"
+                            "box1  box4"
+                            "box1  box5"
+                            "box2  box6";
+
+          gap: 10px;
+        }
+        #box1{
+            height:500px;
+            background-color: blue;
+            grid-area: box1;
+        }
+        #box2{
+            /* height:150px ; */
+            background-color:grey;
+            grid-area: box2;
+        }
+        #box3{
+            /* height:150px ; */
+            grid-area: box3;
+            background-color:grey;
+
+        }
+        #box4{
+            /* height:150px ; */
+            grid-area: box4;
+            background-color:grey;
+        }
+        #box5{
+            /* height:150px; */
+            grid-area: box5;
+            background-color:grey;
+        }
+        #box6{
+            /* height:150px ; */
+            grid-area: box6;
+            background-color:grey;
+        }
+        #box1>.image{
+            width: 100%;
+            background-color: red;
+             height: 260px;
+
+         } 
+        .image>img{
+            width:100%;
+            height: 250px;
+        } 
+      .flex{
+          display: flex;
+      }
+      .p1{
+          /* width: 300px; */
+          width: 100%;
+          margin-left:2%;
+          height: 10px;
+          color:white;
+      }
+      .p1>p:nth-child(1){
+          font-size: 20px;
+        
+      }
+      .p2{
+             width: 100%;
+             margin-left:1%;
+             height: 100px;
+      }     
+      .p2>p:nth-child(1){
+          font-size: 20px;
+          color:blue;
+      }
+
+    
+      @media(max-width: 768px){
+            #head{
+                    grid-template:  "box1 box1"
+                                    "box2 box3"
+                                    "box4 box5"
+                                    "box6 box6";
+                                    background-color:coral;
+            }
+                     #box6{
+                 display:none;
+             }     
+                        
+             }
+            
+            
+    
+      @media(max-width:600px) {
+          #head{
+              grid-template:"box1"
+                            "box2"
+                            "box3"
+                            "box4"
+                            "box5"
+                            "box6";                                  
+                            background-color: yellow;
+          }
+          
+      }
+     
+
+
+
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div id="box1">
+            <div class="image">
+                <img src="https://via.placeholder.com/150" alt="">
+            </div>
+           <div class="p1"> 
+            <p>Ahmedabad joint with Trump will be historic, says Modi</p> 
+            <p>KALOL BHATTACHERJEE  SUHASINI HAIDAR</p>
+            <p>KALOL BHATTACHERJEE  SUHASINI HAIDAR</p>
+            <p>Ahmedabad joint with Trump will be historic,</p> 
+         </div> 
+        </div> 
+        <div id="box2"class="flex">
+            <div><img  src="https://via.placeholder.com/150" alt=""></div>
+             <div class="p2"><p>national1</p>
+                <p>The virus covid19 is vanished from earth and india to give holiday to enjoy</p></div>
+
+            </div> 
+        <div id="box3"class="flex">
+            <div><img  src="https://via.placeholder.com/150" alt=""></div>
+          <div  class="p2"><p>national2</p>
+            <p>The virus covid19 is vanished from earth and india to give holiday to enjoy</p></div>
+
+        </div>
+        <div id="box4"class="flex">
+         <div><img  src="https://via.placeholder.com/150" alt=""></div>
+             <div  class="p2"><p>national3</p>
+                <p>The virus covid19 is vanished from earth and india to give holiday to enjoy</p></div>
+            </div> 
+        <div id="box5"class="flex">
+            <div><img  src="https://via.placeholder.com/150" alt=""></div> 
+             <div  class="p2"><p>national4</p>
+                <p>The virus covid19 is vanished from earth and india to give holiday to enjoy</p></div>
+
+            </div> 
+        <div id="box6"class="flex">
+         <div><img  src="https://via.placeholder.com/150" alt=""></div>
+            <div  class="p2"><p>national5</p>
+                <p>The virus covid19 is vanished from earth and india to give holiday to enjoy</p></div>
+
+            </div>
+
+    </div>
+    
+</body>
+</html>

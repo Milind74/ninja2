@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        button
+        {
+            border-top: 0%;
+            margin-left: 10%;
+        }
+
+        input,label
+        {
+             margin-left: 3%;
+        }
+
+        #main
+        {
+            width: 80vw;
+            height: 80vh;
+            margin: 5% auto;
+            border: 1px solid black;
+
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+
+            grid-template: "a b b b";
+
+
+        }
+
+        #head1
+        {
+            grid-area: a;
+            margin: 0%;
+            border-right: 1px solid black;
+        }
+
+        #head2
+        {
+            grid-area: b;
+            display: flex;
+            flex-flow: row wrap;
+        }
+        #head2 > div
+        {
+            width: 32%;
+            height: 40%;
+            font-size: 20px;
+            border: 1px solid black;
+            
+            padding-left: 1%;
+        }
+        #head2 > div > p
+        {
+            font-weight: 1;
+            padding: 1%;
+            border: 1px solid black;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    <div id="main">
+
+        <div id="head1">
+            <br>
+            <label for="name">Name : </label>
+            <input type="text" name="name" id="name">
+            <br>
+            <br>
+            <label for="price">price</label>
+            <input type="text" name="price" id="price" />
+            <br>
+            <br>
+            <label for="des">Description :</label>
+            <input type="text" name="des" id="des" />
+            <br>
+            <br>
+            <label for="del">Delivery date :</label>
+            <input type="text" name="del" id="del" />
+            <br>
+            <br>
+            <button id="addPr" >add product</button>
+        </div>
+
+        <div id="head2">
+
+            
+        </div>
+
+    </div>
+
+<script>
+    
+
+var btn=document.getElementById("addPr");
+btn.addEventListener('click',test);
+
+var count=0;
+
+function test()
+{
+
+    
+
+  var name=document.getElementById("name").value;
+  var price=document.getElementById("price").value;
+  var des=document.getElementById("des").value;
+  var del=document.getElementById("del").value;
+
+    var newDiv=document.createElement("div");
+    var newP1=document.createElement("p");
+    newP1.innerHTML=name;
+    var newP2=document.createElement("p");
+    newP2.innerHTML=price;
+    var newP3=document.createElement("p");
+    newP3.innerHTML=des;
+    var newP4=document.createElement("p");
+    newP4.innerHTML=del;
+
+    var btn1=document.createElement("button");
+    btn1.innerHTML="Delete";
+
+    btn1.addEventListener('click' , dlt);
+
+    function dlt()
+    {
+        newDiv.remove();
+    }
+
+
+    var btn2=document.createElement("button");
+    btn2.innerHTML="Upload";
+
+    btn2.addEventListener('click' , upld);
+
+    function upld()
+    {
+
+        var price=document.getElementById("price").value;
+         var new_price = prompt('enter price');
+        newP2.innerHTML=new_price;
+
+    }
+
+    newDiv.appendChild(newP1);
+    newDiv.appendChild(newP2);
+    newDiv.appendChild(newP3);
+    newDiv.appendChild(newP4);
+    newDiv.appendChild(btn1);
+    newDiv.appendChild(btn2);
+  
+
+    if(count<6)
+    {
+        var abc=document.getElementById("head2");
+    abc.appendChild(newDiv);
+
+    }
+    count++;
+    
+
+ 
+
+    
+    
+
+
+
+
+}
+
+</script>
+
+
+</body>

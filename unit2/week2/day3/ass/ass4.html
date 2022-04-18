@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body id="background">
+  <button id="resize">Click here to change my color!</button>
+  <script>
+      var btn=document.getElementById("resize")
+    
+      function random(number){
+     return Math.floor(Math.random()*number);
+ }
+ function randomColor(){
+     return 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+ }
+
+ function set(){
+     
+       var color_val=randomColor()
+
+        document.getElementById("resize").style.color=color_val;
+        document.getElementById("background").style.backgroundColor=color_val;
+  
+ }
+        window.addEventListener('resize', set)      
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+       
+        .flex{
+            display: flex;
+        }     
+        .flex>div{
+            background-color: teal;
+            height: 100px;
+            flex-basis: 150px;
+            margin: 10px;
+        }
+        #top1>div:nth-child(2), #top2>div:nth-child(1), #top3>div:nth-child(3){
+            flex-grow: 0.5;
+        }
+ </style>
+</head>
+<body>
+        <div id="top1" class="flex">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="top2" class="flex">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="top3" class="flex">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+    
+</body>
+</html>

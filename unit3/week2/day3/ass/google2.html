@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+         <style>
+            .container{
+                display: grid;
+                grid-template-columns: repeat(3,auto);  
+            }
+            img{
+                height: 50px;
+            }
+            input{
+                width: 400px;
+                height: 30px;
+            }
+            button{
+                height: 35px;
+                width: 60px;
+
+            }
+        </style> 
+    </head>
+    <body>
+    <div class="container">
+           <div>
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png " alt="">
+           </div>
+           <div>
+               <input type="text" id="search"placeholder="search">
+                <button onclick="search()">Search</button>
+           </div>
+           <div> 
+
+   
+        
+ <img style="border-radius: 50%;" src="https://lh3.googleusercontent.com/ogw/ADea4I7JFhP_UYYZCeWVCOzK49xj5tU25i3D5NxDkCty=s64-c-mo" alt="">
+
+        </div>
+</div>     
+<div id="parent"></div>
+
+    </body>
+    </html>
+    <script>
+            var parent = document.getElementById('parent');
+
+        async function search(){
+            let  search=document.getElementById("search").value
+            try{
+
+            let res= await fetch(`http://api.serpstack.com/search?access_key=36f662811ada9b49c0dae6b7ffaac97a&query=${search}&num=100`)
+            mode:"no-cors"
+
+            let {organic_results}=await res.json()
+            console.log("organic",organic_results)
+            appendsearch(organic_results);
+
+            }
+            catch(e){
+            console.log("e:",e)
+        }
+        
+        }
+
+
+           
+    function appendsearch(videos){
+        parent.innerHTML = null
+
+        videos.forEach((el) => {
+            // console.log(videoIds)
+            var div=document.createElement('div')
+            let p1 = document.createElement('p')
+            div.innerHTML =el.title
+            // let p2 = document.createElement('p')
+            // div.innerHTML ={} el.description
+            div.append(p1)
+
+            parent.append(div)
+        })
+    }
+
+        
+
+
+ 
+
+    </script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="random_no">
+        <p id="randomnum"></p>
+    </div>
+    <div id="color">
+        <div id="randomcolor">
+
+        </div>
+    </div>
+    <div id="button"></div>
+    <button type="submit">SUBMIT</button>
+</body>
+</html>
+<script>
+    var btn=document.querySelector("button")
+    function  changerandom_no(){
+        return Math.ceil(Math.random()*6)
+    }
+    var p_value=document.getElementById("randomnum")
+    var randomcolor=document.getElementById("randomcolor")
+           
+    function random_background(){
+        var random_num=changerandom_no()
+        p_value.innerHTML=random_num
+        document.body.style.backgroundColor="white"
+        if(random_num==6){
+            randomcolor.innerHTML=document.body.style.color="green"
+        }
+        else if(random_num==1){
+            randomcolor.innerHTML=document.body.style.color="red"
+
+        }
+        else{
+            randomcolor.innerHTML=document.body.style.color="pink"
+
+        }
+    }
+  btn.addEventListener('click',random_background)
+</script>

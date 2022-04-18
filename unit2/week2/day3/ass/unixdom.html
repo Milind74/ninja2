@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <title>Unix</title>
+        <style>
+            .head{
+                margin: auto;
+                width: 300px;
+                height: 260px;
+                background-color: gray;
+   
+            }
+            .img1{
+                margin-left: 80px;     
+            }
+            .para{
+                width: 150px;
+                 font-size: 25px; 
+                 /* background-color:red; */
+                 margin-bottom:-100px; 
+             }
+        
+        .div2{
+                width: 200px;
+                height: 100px;
+                /* background-color: aqua; */
+                margin: auto;
+                text-align: center;
+                padding: 10px;
+
+            }
+            .middle{
+                width: 80%;
+                height: 200px;
+                /* background-color: blueviolet; */
+                margin: auto;
+            }
+            .img2{
+                margin-left: 350px;
+                margin-top: 20px;
+                float: left;
+            }
+            .div3{
+                width: 400px;
+                height: 150px;
+                /* background-color:lawngreen ; */
+                float: left;
+                margin-top: 20px;
+                margin-left: 10px;
+                font-size: 20px;
+            }
+            .para1{
+                width: 200px;
+                /* background-color: darkgoldenrod; */
+                font-size: 30px;
+                height: 30px;
+            }
+            .para2{
+                float: left;
+                width:500px;
+                font-size: 25px;
+                padding: 3%;
+            }
+            .bott1{
+                display: grid;
+                grid-template: "bot dash right";
+            }
+
+           .bot{
+               width: 30%;
+               height: 100px;
+               /* background:red; */
+               margin-left: 10%;
+                padding:5%;
+                /* float: left; */
+           }
+           .para4{
+               display: grid ;
+               font-size: 30px;
+               color: aliceblue;
+               height: 50px;
+
+           }
+           .para5{
+               font-size: 20px;
+               /* background-color: rgb(255, 127, 127); */
+        
+           }
+           .dash{
+               width: 10px;
+               height: 200px;
+               background-color: black;
+               margin-right: 150px;
+            
+           }
+           .right{
+                width: 300px; 
+                margin-left: 50px; 
+
+         }
+
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="middle"></div>
+        <div id="bottom"></div>
+       <button>Create Page</button>
+    </body>
+    <script>
+        var btn=document.querySelector("button")
+        function create(){
+            //top
+            var parent=document.getElementById("container")
+            var child= document.createElement('div')
+            child.setAttribute('class','head')
+            parent.append(child)
+           
+            var img=document.createElement('img')
+            img.src="https://via.placeholder.com/150"
+            img.setAttribute('class','img1')
+            child.append(img)
+           
+            var child2=document.createElement('div')
+            child2.setAttribute('class','div2')
+            child.append(child2)
+            var p=document.createElement('paraghaph')
+            p.textContent="linus torvards"
+            p.setAttribute('class','para')
+            child2.append(p)
+
+            var child3=document.createElement('div')
+            child3.setAttribute('class','div2')
+            child2.append(child3)
+
+            var p1=document.createElement('paraghaph')
+            p1.textContent="creater of linux and git"
+            p1.setAttribute('class','para')
+            child3.append(p1)
+
+//middle
+            var midparent=document.getElementById("middle")
+            var midchild= document.createElement('div')
+            midchild.setAttribute('class','middle')
+            midparent.append(midchild)
+           
+            var img1=document.createElement('img')
+            img1.src="https://via.placeholder.com/120"
+            img1.setAttribute('class','img2')
+            midchild.append(img1)
+           
+            var midchild2=document.createElement('div')
+            midchild2.setAttribute('class','div3')
+            midchild.append(midchild2)
+            
+            var p2=document.createElement('paraghaph')
+            p2.textContent="Sai khan"
+            p2.setAttribute('class','para1')
+            midchild2.append(p2)
+
+            var p3=document.createElement('paraghaph')
+            p3.textContent="kldjk nfknk fnfn ggnggg gngg mgggnglkfnkms"
+            p3.setAttribute('class','para2')
+            midchild2.append(p3)
+//bottom
+            var bottomparent=document.getElementById("bottom")
+            bottomparent.setAttribute('class','bott1')
+            bottomparent.style.background="orange"
+            var bottomchild=document.createElement('div')
+            bottomchild.setAttribute('class','bot')
+            bottomparent.append(bottomchild)
+
+        var p4=document.createElement('paragraph') 
+        p4.textContent="ken thompson"      
+ 
+        p4.setAttribute('class','para4')
+          bottomchild.append(p4)
+
+        var p5=document.createElement('paragraph')
+        p5.textContent="designed and operated by original unix operating system"
+        p5.setAttribute('class','para5')
+        bottomchild.append(p5)
+      
+        var middiv=document.createElement('div')
+        middiv.setAttribute('class','dash')
+        bottomparent.append(middiv)
+
+        var rightdiv=document.createElement('div')
+        rightdiv.setAttribute('class','right')
+        bottomparent.append(rightdiv)
+        var p6=document.createElement('paragraph') 
+        p6.textContent="ken thompson"      
+ 
+        p6.setAttribute('class','para4')
+        rightdiv.append(p6)
+
+        var p7=document.createElement('paragraph')
+        p7.textContent="designed and operated by original unix operating system"
+        p7.setAttribute('class','para5')
+        rightdiv.append(p7)
+        }
+        btn.addEventListener('click',create)
+
+    </script>
+    </html>

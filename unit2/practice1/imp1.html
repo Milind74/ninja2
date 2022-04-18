@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+       width: 80%;
+    }
+    form>div{
+        margin: auto;
+    }
+    table{
+        border: 1px solid black;
+        text-align: center;
+    }
+    td,th{
+        border: 1px solid black;
+    }
+
+</style>
+<body> 
+    <div>
+        <input type="text" id="name"placeholder="name">
+ </div>
+    <div>
+        <input type="number" id="age"placeholder="age">
+    </div>
+    <div>
+        <input type="number" id="smarks"placeholder="smarks">
+    </div>
+    <div>
+        <input type="number" id="engmarks"placeholder="emarks">
+    </div>
+    <div>
+        <input type="number" id="mathsmarks"placeholder="mmarks">
+    </div>
+    <div>
+        <button id="submit_btn">submit</button>    
+    </div>
+    <table>
+        <th>name</th>   
+        <th>age</th>
+        <th>smarks</th>
+        <th>engmarks</th>
+        <th>mathsmarks</th>
+        <th>totalmarks</th>
+    </table>
+</body>
+</html>
+<script>
+     var submit_btn=document.getElementById("submit_btn")
+    submit_btn.addEventListener('click',validation)
+    function deletebtn(e){
+        e.target.parentNode.remove()
+    }
+    function createrow(name,age,smarks,engmarks,mathsmarks,totalmarks) {
+        var row=document.createElement("tr")
+        var col1=document.createElement("td")
+        col1.textContent=name
+        var col2=document.createElement("td")
+        col2.textContent=age
+        var col3=document.createElement("td")
+        col3.textContent=smarks
+        var col4=document.createElement("td")
+        col4.textContent=engmarks
+        var col5=document.createElement("td")
+        col5.textContent=mathsmarks
+        var col6=document.createElement("td")
+        col6.textContent=totalmarks
+        var btn=document.createElement("button")
+        btn.textContent="delete"
+        btn.addEventListener("click",deletebtn)
+        row.append(col1,col2,col3,col4,col5,col6,btn)
+        var table=document.querySelector('table')
+        table.append(row)
+    }
+
+    function validation(){
+    // event.preventDefault()
+    var name=document.getElementById('name').value
+    document.getElementById("name").value=""
+    console.log(name)
+    var age=document.getElementById('age').value
+    document.getElementById("age").value=""
+    console.log(age)
+
+    var smarks=document.getElementById('smarks').value
+    document.getElementById("smarks").value=""
+    console.log(smarks)
+
+    var engmarks=document.getElementById('engmarks').value
+    document.getElementById("engmarks").value=""
+    console.log(engmarks)
+
+    var mathsmarks=document.getElementById('mathsmarks').value
+    document.getElementById("mathsmarks").value=""
+    console.log(mathsmarks)
+        var totalmarks=Number(smarks)+Number(engmarks)+Number(mathsmarks)
+        console.log(totalmarks)
+        createrow(name,age,smarks,engmarks,mathsmarks,totalmarks) 
+}
+</script>
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="year" />
+    <button onclick="checkage()">check-age</button>
+    <p id="message"></p>
+    <script>
+        function checkage() {
+            var year=Number(document.getElementById("year").value);
+            var age=2021-year;
+            var message=document.getElementById("message")
+           if(age==18){
+            message.textContent="just old enough"
+
+                }
+            else if(age>18){
+                message.textContent="drive"
+
+            }
+            
+            else {
+                   message.textContent="cant drive"
+                 }
+
+        }
+    </script>
+    
+</body>
+</html>

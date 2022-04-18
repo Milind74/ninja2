@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+// /1ST
+  
+   Array.prototype.push=function(num){
+       let index=this.length
+       this[index]=num
+}
+   const arr=new Array(1,2,3)
+   const arr2=new Array(3,2,1)
+
+   arr.push(4)
+   console.log(arr)
+
+
+
+   //2nd
+   Array.prototype.reverse=function(num){
+    var rev=[]
+
+    for(i=this.length-1;i>=0;i--){
+    rev.push(this[i])
+    }
+    console.log("arr4="+rev)
+    }
+    
+    const arr4=new Array(1,2,3) 
+    arr4.reverse()
+
+
+
+   //3rd
+
+   Array.prototype.print=function(){
+    console.log(arr1)
+}
+   const arr1=new Array(2,2,3)
+
+    arr1.print()
+
+    //4th
+    
+
+   Array.prototype.print=function(){
+    console.log(arr5[0])
+}
+   const arr5=new Array(1,2,3)
+
+    arr5.print()
+
+
+
+</script>

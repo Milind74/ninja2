@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+      #minmaxbox {
+        width: 500px;
+        height: 100px;
+        /* background-color: orange; */
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+      }
+      #min,
+      #max {
+        height: 80px;
+        width: 100px;
+        font-size: 40px;
+        text-align: center;
+        padding: 3%;
+      }
+      #min {
+        background-color: red;
+        /* border: 1px black; */
+      }
+      #max {
+        background-color: green;
+      }
+      #minmaxbox > div > div:nth-child(2) {
+        text-align: center;
+        font-size: 35px;
+      }
+      h3 {
+        text-align: center;
+        font-size: 30px;
+      }
+      #mid {
+        width: 250px;
+        /* height: 500px; */
+        margin: auto;
+        text-align: center;
+      }
+      #mid > input {
+        border-radius: 2px black;
+        height: 70px;
+        width: 220px;
+        text-align: center;
+        font-size: 35px;
+        margin-right: 1%;
+      }
+      #button {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #button > button {
+        border: 1px solid black;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        margin: 10px;
+      }
+      #enter_btn {
+        width: 200px;
+        height: 60px;
+        background-color: black;
+        color: white;
+        font-size: 30px;
+      }
+      #button > button:nth-child(10),
+      #button > button:nth-child(12) {
+        visibility: hidden;
+      }
+      #button > .zero:nth-child(11) {
+        background-color: palevioletred;
+      }
+     
+      #button > button:nth-child(2n) {
+        background-color: orangered;
+      }
+      #button > button:nth-child(2n + 1) {
+        background-color: olive;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="minmaxbox">
+      <div>
+        <div id="min">43</div>
+        <div>min</div>
+      </div>
+      <div>
+        <div id="max">2019</div>
+        <div>max</div>
+      </div>
+    </div>
+    <div id="mid">
+      <h3>score</h3>
+      <input id="input" value="#" />
+      <div id="button">
+        <button onclick="input_fun(1)">1</button>
+        <button onclick="input_fun(2)">2</button>
+        <button onclick="input_fun(3)">3</button>
+        <button onclick="input_fun(4)">4</button>
+        <button onclick="input_fun(5)">5</button>
+        <button onclick="input_fun(6)">6</button>
+        <button onclick="input_fun(7)">7</button>
+        <button onclick="input_fun(8)">8</button>
+        <button onclick="input_fun(9)">9</button>
+        <button></button>
+        <button class="zero" onclick="input_fun(0)">0</button>
+        <button></button>
+      </div>
+      <!-- <div class="enter"> -->
+      <button onclick="sumfunc()" id="enter_btn">ENTER</button>
+      <!-- </div> -->
+    </div>
+    <script>
+      var temp = "";
+      function input_fun(num) {
+        temp = temp + num;
+        var input_field = document.getElementById("input");
+        input_field.value = Number(temp);
+        // console.log(input_field.value)
+      }
+      function sumfunc() {
+        var input_value = document.getElementById("input").value;
+        // change by nitansh
+        document.getElementById("input").value = "";
+        temp = "";
+        var max_value = Number(document.getElementById("max").textContent);
+        var min_value = Number(document.getElementById("min").textContent);
+        // console.log(min_value)
+        // console.log(max_value)
+        // console.log(input_value)
+        if (input_value > max_value) {
+          document.getElementById("max").textContent = input_value;
+        } else if (input_value < min_value) {
+          document.getElementById("min").textContent = input_value;
+        }
+        // var input_field = document.getElementById("enter_btn");
+        // input_field.value = " ";
+      }
+      var btn = document.getElementById("enter_btn");
+      btn.addEventListner("click", sumfunc);
+    </script>
+  </body>
+</html>

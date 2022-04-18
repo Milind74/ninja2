@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    class Stack{
+        constructor(){
+            this.length=0
+            this.Stack=[]
+        }
+        push(...v){
+                this.stack=[...this.stack,...v]
+                this.length=this.length+v.length
+
+        }
+        remove(){
+            this.stack.pop()
+            this.length--
+        }
+    }
+
+    let stack=new Stack()
+    stack.push('hello world1','hello world2','hello world3','hello world4')
+    console.log('stack',stack)
+    stack.remove()
+    stack.remove
+
+
+</script>

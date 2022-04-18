@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div">
+   
+    <!-- <button onclick="order()">order food</button> -->
+<br>
+    <input id="rd1" name="grp1" type="radio"value="nonveg">Non-Veg
+    <br>
+    <input id="rd2"  name="grp1" type="radio"value="veg">Veg
+    <br>
+    <input id="rd3"  name="grp1" type="radio"value="sweets">Sweets
+    <br>
+    <button onclick="fn1()" id="btn1" >orderfood</button>
+</div>
+</body>
+</html>
+
+<script>
+    
+ async function fn1(){
+   
+        let promise = new Promise(function(resolve,reject) {
+
+        var rd1=document.getElementById("rd1")
+        var rd2=document.getElementById("rd2")
+        var rd3=document.getElementById("rd3")
+       
+        var div=document.getElementById("div");
+        var image=document.createElement("img")
+        div.appendChild(image)
+        var heading=document.createElement("h1");
+         div.appendChild(heading)
+         var image1=document.createElement("img")
+         div.appendChild(image1)
+         var heading1=document.createElement("h1");                                                
+         div.appendChild(heading1)                            
+         var image2=document.createElement("img")
+         div.appendChild(image2)
+         var heading2=document.createElement("h1");
+         div.appendChild(heading2)
+                                                     
+        setInterval(function () {
+            var array=[1,2,3,4,5]
+            for(var i=0;i<array.length;i++){
+
+            
+        if(rd1.checked==true){
+            image.src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/f_auto,q_auto,w_250/v1589467260/Item/65.png"
+
+        
+            heading.innerHTML=`order id:${(Math.random(array[i]))}`
+            resolve("your order is ready")
+
+    }
+    if(rd2.checked==true){
+        image1.src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/f_auto,q_auto,w_250/v1589466377/Item/66.png"
+        heading1.innerHTML=`order id:${(Math.random(array[i]))}`
+        resolve("your order is ready")
+
+                
+    }
+    if(rd3.checked==true){
+        image2.src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/f_auto,q_auto,w_250/v1589546575/Item/70.png"
+        heading2.innerHTML=`order id:${(Math.random(array[i]))}`
+        resolve("your order is ready")
+
+               
+    }
+}
+
+ },1000)
+ })
+ clearInterval()
+
+ promise.then(function(res){
+     alert(res)
+ })
+ .catch(function(err){
+     console.log("err:",err)
+ })
+ clearInterval(promise)
+
+}
+
+
+</script> 
+

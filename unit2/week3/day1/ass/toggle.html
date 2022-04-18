@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Type a task: <input id="task1" />
+    <button id="button">SUBMIT</button>
+    <button id="button1">TOGGLE</button>
+    <p id="para"></p>
+  </body>
+    
+</html>
+<script>
+        function task(n) {
+        this.name_of_task = n;
+        this.date = new Date();
+        this.status = "false";
+     }
+
+    var button = document.getElementById("button");
+    button.addEventListener("click", update);
+   
+    function update() {
+    var input = document.getElementById("task1").value;
+    console.log(input)
+    var task1 = new task(input);
+    console.log(task1);
+
+    var para = document.getElementById("para");
+   //task display
+    var list1 = document.createElement("li");
+    list1.innerHTML = "Name of task:" + " " + task1.name_of_task;
+    para.appendChild(list1);
+   //date display
+    var list2 = document.createElement("li");
+    list2.innerHTML = "Date:" + " " + task1.date;
+    para.appendChild(list2);
+
+    //status
+    var list3 = document.createElement("li");
+    list3.innerHTML = task1.status;
+    para.appendChild(list3);
+  }
+  var button1 = document.getElementById("button1");
+  button1.addEventListener("click", toggle_task);
+  function toggle_task() {
+    var status= document.getElementById("para");
+    var status1 = document.querySelector("li:nth-child(3)");
+    console.log(status1);
+    if (status1.textContent == "true") {
+      status1.textContent = "false";
+    } else {
+      status1.textContent = "true";
+    }
+    console.log(status1.textContent);
+  }
+ 
+</script>

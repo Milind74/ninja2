@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+    
+      h3 {
+        text-align: center;
+        font-size: 30px;
+      }
+      #mid {
+        width: 350px;
+        /* height: 500px; */
+        margin: auto;
+        text-align: center;
+        background-color: aqua;
+
+      }
+      #mid > input {
+        border-radius: 2px black;
+        height: 70px;
+        width: 300px;
+        text-align: center;
+        font-size: 35px;
+        margin-right: 1%;
+      }
+      #button {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #button > button {
+        border: 1px solid black;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        margin: 10px;
+      }
+      #enter_btn {
+        width: 200px;
+        height: 60px;
+        background-color: black;
+        color: white;
+        font-size: 30px;
+      }
+      /* #button > button:nth-child(10),
+      #button > button:nth-child(12) {
+        visibility: hidden;
+      } */
+      #button > .zero:nth-child(11) {
+        background-color: palevioletred;
+      }
+     
+      #button > button:nth-child(2n) {
+        background-color: orangered;
+      }
+      #button > button:nth-child(2n + 1) {
+        background-color: olive;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div id="mid">
+      <h3>score</h3>
+      <input id="input" />
+      <div id="button">
+        <button onclick="input_fun('1')">1</button>
+        <button onclick="input_fun('2')">2</button>
+        <button onclick="input_fun('3')">3</button>
+        <button onclick="input_fun('+')">+</button>
+        <button onclick="input_fun('4')">4</button>
+        <button onclick="input_fun('5')">5</button>
+        <button onclick="input_fun('6')">6</button>
+        <button onclick="input_fun('-')">-</button>
+        <button onclick="input_fun('7')">7</button>
+        <button onclick="input_fun('8')">8</button>
+        <button onclick="input_fun('9')">9</button>
+        <button onclick="input_fun('x')">x</button>
+        <button onclick="input_fun('.')">.</button>
+        <button class="zero" onclick="input_fun('0')">0</button>
+        <button onclick="input_fun('%')">%</button>
+        <button onclick="input_fun('/')">/</button>
+
+    </div>
+      <!-- <div class="enter"> -->
+      <button onclick="calfunc()" id="enter_btn">ENTER</button>
+      <!-- </div> -->
+    </div>
+    <script>
+      function input_fun(val) {
+        var input_field = document.getElementById("input");
+        input_field.value = input_field.value+val;
+
+        console.log(input_field.value)
+      }
+      function calfunc(){
+     var input_field = document.getElementById("input").value;
+     
+    }
+    </script>
+  </body>
+</html>

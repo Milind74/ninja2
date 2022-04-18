@@ -1,0 +1,165 @@
+//Create Products.html. Show all the products you have stored in local storage. Price, Name, and Image should be visible. Each row should show 4 products each
+Each product should have a ‘Add to Cart’ button. When clicked, the product should get added to the user’s cart. Store products added in the cart to localstorage.
+Show an alert if you try to add a product that is already in the cart.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #form{
+        display: grid;
+        width: 10%;
+    }
+    input {
+        margin-bottom: 5%;
+      }
+     #data {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        gap: 3%;
+        margin: auto;
+        background-color: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7xwE2exC0gid64VH-x62DDr_4j5uYK9RBmg&usqp=CAU');
+        text-align: center;
+      }
+</style>
+<body>
+    <form id="form">
+        <label for="">product name</label>
+        <input id="name" type="text">
+        <label for="">price</label>
+        <input id="price" type="number">
+        <label for="">image</label>
+        <input id="img" type="text">
+        
+        <input type="submit" name="submit">
+    </form>
+
+    <!-- <button onclick="cart()">add to cart</button> -->
+    <button onclick="showlocations()">Show Locations</button>
+    <div id="data"></div>
+
+</body>
+</html>
+<script>
+    var formdata = document.getElementById('form')
+    formdata.addEventListener('submit', addproduct)
+    function addproduct(e) {
+    e.preventDefault()
+    var product = {
+        name: formdata.name.value,
+        price: formdata.price.value,
+        image: formdata.img.value,
+    }
+    console.log(product)
+    let arr;
+    var products = JSON.parse(localStorage.getItem('products'))
+    arr = localStorage.getItem("product");
+    //console.log(arr)
+    if (arr == null) {
+        arr = [];//first time visitor
+        } 
+        else {//if it is in storage it will be in json so we convert to object
+
+        arr = JSON.parse(arr);//array format conversion
+    
+                } 
+        arr.push(product);
+        localStorage.setItem('product',JSON.stringify( arr))
+    }
+
+    function showlocations(){
+        
+        let data=localStorage.getItem("product")
+        data=JSON.parse(data)
+
+        let parent = document.getElementById("data");
+        parent.innerHTML = null;
+
+       data.forEach(function (el) {
+        let div = document.createElement("div");
+
+        let p_name=document.createElement('p')
+        p_name.innerHTML=`item:${el.name}`
+        
+        let p_price = document.createElement("p");
+        p_price.innerHTML = `price: ${el.price}`;
+       
+        let img = document.createElement("img");
+        img.style.width = "200px";
+        img.style.height = "200px";
+        img.src = el.image;
+
+        
+      let btn = document.createElement("button");
+      btn.textContent = "Add to cart";
+      btn.style.display = "block";
+
+
+      btn.onclick = function () {
+        addtocart(el);
+      };
+
+       
+      let btn1 = document.createElement("button");
+      btn1.textContent = "showcart";
+      btn1.style.display = "block";
+
+
+      
+      btn1.onclick = function () {
+        showcart();
+      };
+
+      div.append(p_name,p_price,img, btn,btn1);
+      parent.append(div);
+
+});
+
+    }
+       
+
+    function addtocart(el){
+        let arr;
+        let mycart;
+        mycart=localStorage.getItem('cart')
+        var count=0//
+        if(mycart==null){
+            arr=[]
+            arr.push(el);///
+
+        } else {
+      arr = JSON.parse(localStorage.getItem("cart"));
+    
+        //
+        for(i=0;i<arr.length;i++){
+          if(el.name==arr[i].name&&el.price==arr[i].price&&el.image==arr[i].image){
+              alert("already added")
+              
+              break;
+          }
+          count++
+
+        }
+
+        if(count==arr.length){
+        arr.push(el);
+        console.log(arr)
+        localStorage.setItem("cart", JSON.stringify(arr));
+        }
+    }
+           console.log(arr)
+        localStorage.setItem("cart", JSON.stringify(arr));
+        }
+
+
+ 
+function showcart() {
+    location.assign('cart.html')
+}        
+       
+ 
+</script>

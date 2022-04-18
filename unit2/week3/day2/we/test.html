@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    
+
+// const arr= new Array(1,2,3)
+
+// console.log(arr)//op
+/* 0:1
+   1:2
+   2:3
+   and its prototype will be object 
+   and proto of array constructor function object*/
+   
+   
+   //2nd
+
+//    const arr=new Array(1,2,3)
+
+//    Array.prototype.print=function(){
+//        console.log(arr)
+//    }
+//    arr2.print()
+
+
+
+  // 3rd
+   
+//    const arr=new Array(1,2,3)
+//    const arr2=new Array(3,2,1)
+
+//    Array.prototype.print=function(){
+//        console.log(this)
+//    }
+//    arr2.print()
+
+
+//4th
+ 
+//    const arr=new Array(1,2,3)
+//    const arr2=new Array(3,2,1)
+
+//    Object.prototype.print=function(){
+//        console.log(this)
+//    }
+//    arr2.print()
+//    str.print()
+
+   //it will work becaz of inheritance
+
+
+
+
+// //5th push
+//    const arr=new Array(1,2,3)
+//    const arr2=new Array(3,2,1)
+
+//    Array.prototype.push=function(num){
+//        let index=this.length
+//        this[index]=num
+
+// }
+//    arr.push(4)
+//    console.log(arr)
+
+
+
+
+
+//6th remove
+const arr=new Array(1,2,3)
+const arr2=new Array(3,2,1)
+   Array.prototype.push=function(num){
+       let index=this.length
+       this[index]=num
+   }
+Array.prototype.pop=function(){
+    // let index=this.length-1
+    this.pop()
+    console.log(this.length)
+
+}
+
+arr.push(4)
+arr.pop()
+arr.push(6)
+
+console.log(arr)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Teacher (teacher,exp){
+    this.t_name=teacher;
+    this.exp=exp;
+    
+  
+  }
+  function Student(student,bio){
+      this.s_name=student;
+      this.bio=bio;
+  }
+  
+  function Competition(event,venue){
+      this.event=event;
+      this.venue=venue;
+  }
+  
+  Teacher.prototype.bio=function(){
+     return (this.t_name+" "+"Have a experience of "+this.exp);
+  }
+  
+  Student.prototype.Bio=function(){
+     return (this.s_name+" "+this.bio)
+  }
+  
+  Competition.prototype.Venue=function(){
+      return (this.event+" "+this.venue)
+  }
+  
+  var teacher1= new Teacher("V.K.Katariya",10);
+  var a=teacher1.bio();
+  
+  console.log(teacher1);
+  console.log(a)
+  
+  var student1= new Student("Rohan","i am a football player")
+  a=student1.Bio();
+  console.log(student1) 
+  console.log(a)
+  
+  
+  var competition1=new Competition("football","Banglore stadium");
+  var c=competition1.Venue();
+  console.log(competition1);
+  console.log(c)

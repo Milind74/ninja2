@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #dis{
+    width: 1000px;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 3%;
+    background-image:url(' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7xwE2exC0gid64VH-x62DDr_4j5uYK9RBmg&usqp=CAU');
+    margin: auto;
+    /* height: 800px; */
+        margin-bottom: 10%;
+        color: white;
+        font-size: 20px;
+    }
+    #promobtn:hover {
+        background-color: cornflowerblue;
+        cursor: pointer;
+
+      }
+    
+    input{
+        width: 200px;
+        height: 40px;
+        border-radius: 4%;
+        border: 1px solid black;
+    }
+    #price{
+        border: 1px solid black;
+        width: 200px;
+    }
+        #promo{
+            border: 1px solid black;
+            width: 400px;
+            /* height: 200px; */
+            grid-template-columns: 20%;
+        }
+        #head{
+            display: grid;
+            grid-template-columns: 30% 20% 50%;
+        }
+    button{
+        width: 100px;
+        height: 40px;
+        border-radius: 3%;
+    }
+    #totalitem{
+        width: 100px;
+        height: 150px;
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <div id="head">
+        <div id="price">
+        </div>
+        <div id="totalitem"></div>
+
+        <div id="promo">
+            <!-- promocode:<input type="text"placeholder="example : PROMO10"> -->
+            <p style="font-size: 16px">Apply promocode to get discount</p>
+
+            <input
+            required
+            id="input"
+            type="text"
+           
+            placeholder="example : PROMO10"
+
+          />
+          <button id="promobtn">Apply CODE</button> 
+          <h3 id="dprice"></h3>
+
+        </div>
+
+    </div>
+    
+   
+   
+    <div id="dis"></div>
+   
+
+    
+    <!-- <div class="promo">
+        <h2 id="price"></h2>
+        <p style="font-size: 16px">Apply promocode to get discount</p>
+        <input
+          required
+          id="input"
+          type="text"
+          minlength="7"
+          maxlength="7"
+          placeholder="example : PROMO10"
+        />
+         <button id="promobtn">Apply CODE</button> -->
+        <!-- <h2 id="dprice"></h2> -->
+</body>
+</html>
+<script src="cart.js">
+
+</script>

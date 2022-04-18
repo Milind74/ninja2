@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+      body {
+        font-weight: bolder;
+        font-size: 20px;
+      }
+      #div1 {
+        background-color: rgb(157, 247, 172);
+        margin: 20px;
+        padding: 10px;
+      }
+      #menu{
+          display: flex;
+          gap:40px;
+          height: 50px;
+          background-color: red;
+          width: 100%;
+      }
+      a{
+          text-decoration: none;
+          color: white;
+          margin-top: 10px;
+          margin-left: 50px;
+      }
+    </style>
+  </head>
+  <style></style>
+  <body>
+
+    
+        <div id="menu">
+            <!-- <a href="sports.html">sports</a>
+            <a href="enter.html">entertainment</a>
+            <a href="technology.html">technology</a> -->
+            <h1 style="text-align: center;margin: auto; color: white" >Tesla News</h1>
+
+        </div>
+    <h1 style="text-align: center; color: cadetblue">
+      ------Top 5 Headlines------
+    </h1>
+
+    <div id="data"></div>
+
+    <div id="buttons" style="width: 300px; margin: auto"></div>
+  </body>
+</html>
+
+<script>
+  //fetch the data
+
+  //show the button
+
+  var parent = document.getElementById("data");
+
+  async function getData() {
+    // var search = document.getElementById("search").value;
+
+    try {
+      let res = await fetch(`https://newsapi.org/v2/everything?q=tesla&sortBy=popularity&apiKey=7c89e7d76ba44e73b89697d87b5d3c2f`)
+      let data1 = await res.json();
+      data = data1.articles;
+      console.log(data)
+      return data; //return data as a promise
+    } catch (e) {
+      console.log("e:", e);
+    }
+  }
+
+  var data;
+
+  async function main() {
+    data = await getData();
+  
+  }
+
+
+  
+  function showButtons(index) {
+    console.log("index",index);
+    let buttons_div = document.getElementById("buttons");
+    buttons_div.innerHTML = null;
+    let original_id = index;
+
+    index = index + 1;
+
+    if (index <= 6) {
+      index = 6;
+    }
+
+    for (var i = index - 5; i <= index + 4; i++) {
+      let button = document.createElement("button");
+      button.style.width = "30px";
+      button.innerText = i;
+      button.setAttribute("id", `${i}`);
+      button.onclick = showData;
+      buttons_div.appendChild(button);
+    }
+    let btn = document.getElementById(original_id);
+    btn.style.backgroundColor = "olive";
+    btn.style.color = "white";
+  }
+  main();
+
+
+  function showData() {
+    let id = Number(this.id);
+    let num = id - 1;
+
+    let data1 = data.slice(5 * num, (num + 1) * 5);
+    console.log(data1);
+    parent.innerHTML = null;
+
+    data1.forEach(function (el) {
+      let div = document.createElement("div");
+      div.setAttribute("id", "div1");
+      let p = document.createElement("p");
+      p.innerText = `Title: ${el.title}`;
+      p.style.textAlign = "center";
+      let p1 = document.createElement("p");
+      p1.innerText = `Description:${el.description}`;
+      p1.style.textAlign = "center";
+
+      div.append(p, p1);
+
+      parent.append(div);
+    });
+    showButtons(id);
+
+  }
+  showButtons(1)
+
+
+</script>

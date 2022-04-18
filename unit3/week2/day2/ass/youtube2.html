@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #parent{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 25% 25% 25%;
+            margin-top:30px;
+            margin-left: 170px;
+            gap :20px
+            
+        }
+        #id1{
+            width:90%;
+           height: 200px;
+            /* height: 500px; */
+        }
+        /* input{
+            width:500px;
+            height: 30px;
+            /* margin: auto; */
+            /* margin-left: 100px; */
+        /* } */
+        #menu{
+          display: flex;
+          gap:40px;
+          height: 50px;
+          background-color: red;
+          width: 100%;
+      }
+      a{
+          text-decoration: none;
+          color: white;
+          margin-top: 10px;
+          margin-left: 100px;
+      }
+      #box{
+          width:700px;
+          margin:auto;
+      }
+    </style>
+</head>
+<body>
+    <div id="menu">
+<div id="box">
+    <input  id="search" style="height: 40px; width: 400px;border-radius: 2px;"type="text" placeholder="search">
+   
+    <button style="height: 40px;width: 100px;" onclick="searchVideos()">Search</button>
+
+</div>
+ </div>
+       
+
+    </div>
+    <div id="parent"></div>
+</body>
+</html>
+<script>
+    var parent = document.getElementById('parent');
+    async function searchVideos(){
+        var search = document.getElementById("search").value
+        //search api fetch
+        try{
+            let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${search}&key=AIzaSyAepSJDf1P4lS2AOl5hDyx4RFQnloS2cqY&maxResults=20`)
+            var {items} = await res.json();
+            // var data = await res1.json();
+            // console.log(data)
+
+
+            console.log("items:",items)
+            items =items.filter(({id:{videoId}})=>{return videoId!=undefined})
+            appendVideos(items);
+        }
+        catch(e){
+            console.log("e:",e)
+        }
+    }
+//trending fetch api
+    async function popularVideos(){
+        // var search = document.getElementById("search").value
+        try{
+            let res1 = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=in&videoCategoryId=17&key=AIzaSyAepSJDf1P4lS2AOl5hDyx4RFQnloS2cqY&maxResults=20&&mosttrending`)
+            var {items} = await res1.json()
+            console.log("items:",items)
+            items =items.filter(({id})=>
+            {return id!=undefined})
+            appendpopular(items);
+        }
+        catch(e){
+            console.log("e:",e)
+        }
+    }
+    popularVideos()
+
+    //trending append
+    function appendpopular(videos){
+        parent.innerHTML = null
+
+        videos.forEach(({id})  => {
+        console.log(id)
+            let div = document.createElement('div')
+            // div.setAttribute('id','div1')
+            div.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+
+
+            parent.append(div)
+        })
+
+    }
+//search append
+    function appendVideos(videos){
+        parent.innerHTML = null
+
+        videos.forEach(({id:{videoId}})  => {
+            // console.log(videoIds)
+            let div = document.createElement('div')
+            div.setAttribute('id','id1')
+            div.innerHTML = `<iframe  src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            parent.append(div)
+        })
+
+    }
+
+</script>

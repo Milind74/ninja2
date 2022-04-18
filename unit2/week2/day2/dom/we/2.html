@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <head>
+        <title>Practise Selectors</title>
+    </head>
+    <body>
+        <h1>First H1</h1>
+        <h1>Second H1</h1>
+        <h3>First H3</h3>
+        <h3>Second H3</h3>
+        <h5>First H5</h5>
+        <h5>Second H5</h5>
+        <h5>Third H5</h5>
+        <div class="green">First DIV</div>
+        <div class="red">Second DIV</div>
+        <div class="blue">Third DIV</div>
+        <p class="green">First P</p>
+        <p class="blue">Second P</p>
+        <p class="red">Third P</p>
+        <hr/>
+        <button onclick="changeH1()">Change H1</button>
+        <button onclick="changeAllH3()">Change H3</button>
+        <button onclick="changeH5()">Change H5</button>
+        <button onclick="changegreen()">Change Green</button>
+        <button onclick="changeBlue()">Change Blue</button>
+        <button onclick="changeRed()">Change Red</button>
+        <script>
+            function changeH1(){
+                var firsth1=document.querySelector("h1")
+                firsth1.style.color="red"
+            }
+            function changeAllH3(){
+                var allh3=document.querySelectorAll("h3")
+                for(var i=0;i<allh3.length;i++){
+                allh3[i].style.color="green"
+                }
+            }
+                function changeH5(){
+            var allH5= document.querySelectorAll("h5")
+            for(var i=0;i<allH5.length;i++){
+                allH5[i].style.color = "blue"
+
+            }
+            }
+            function changegreen(){
+            var allgreen = document.querySelectorAll(".green")
+            for(var i=0;i<allgreen.length;i++){
+                allgreen[i].style.color = "green"
+
+            }
+            }
+
+
+            function changeBlue(){
+            var allblue= document.querySelectorAll(".blue")
+            for(var i=0;i<allblue.length;i++){
+                allblue[i].style.color = "blue"
+
+            }}
+            function changeRed(){
+            var allred= document.querySelectorAll(".red")
+            for(var i=0;i<allred.length;i++){
+                allred[i].style.color = "red"
+
+            }}
+            
+            
+         
+        </script>
+    </body>
+</html>

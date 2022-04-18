@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        #layout{
+            display: grid;
+            width: 1200px;
+            grid-template-columns: 150px 150px 150px 150px;
+            grid-template-rows: 150px 150px 150px;
+
+        }
+        #layout>div{
+            background-color: teal;
+            margin: 20px;
+        }
+        #layout>#item2{
+            grid-row-start: 1;
+            grid-column-start: 2;
+            grid-row-end:1 ;
+            grid-column-end:4 ;
+        }
+        #layout>#item4{
+            grid-row-start: 2;
+            grid-column-start: 1;
+            grid-row-end:2 ;
+            grid-column-end:3 ;
+        }
+        #layout>#item9{
+            grid-row-start: 3;
+            grid-column-start:3;
+            grid-row-end:3 ;
+            grid-column-end:5 ;
+        }
+    </style>
+</head>
+<body>
+    <div id="layout">
+         <div id="item1">1</div>
+        <div  id="item2">2</div>
+        <div  id="item3">3</div>
+        <div  id="item4">4</div>
+        <div  id="item5">5</div>
+        <div  id="item6">6</div>
+        <div  id="item7">7</div>
+        <div  id="item8">8</div>
+        <div  id="item9">9</div>
+    
+
+    </div>
+    
+</body>
+</html>

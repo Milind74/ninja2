@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #travel_form {
+        width: 10%;
+      }
+      input {
+        margin-bottom: 5%;
+      }
+      #data {
+        display: flex;
+        gap: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="travel_form">
+      <input type="text" id="name" placeholder="name" />
+      <input type="number" id="rating" placeholder="rating" />
+      <input type="text" id="image" placeholder="image" />
+    </form>
+
+    <button onclick="addlocation()">Add Location</button>
+
+    <button onclick="showlocations()">Show Locations</button>
+
+    <button onclick="showFav()">Show fovorites</button>
+
+    <div id="data"></div>
+  </body>
+</html>
+<script>
+  function addlocation() {
+    let form = document.getElementById("travel_form");
+
+    let name = form.name.value;
+    let rating = form.rating.value;
+    let image = form.image.value;
+
+    let location = {
+      name,
+      rating,
+      image,
+    };
+
+    let arr;
+    arr = localStorage.getItem("location"); //this is first time visitor
+
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(arr);
+    } //array format conversion
+
+    arr.push(location);
+
+    localStorage.setItem("location", JSON.stringify(arr));
+  }
+
+  function showlocations() {
+    let data = localStorage.getItem("location");
+    data = JSON.parse(data);
+
+    let parent = document.getElementById("data");
+
+    parent.innerHTML = null;
+
+    data.forEach(function (el) {
+      let div = document.createElement("div");
+
+      let p_name = document.createElement("p");
+      p_name.innerHTML = `Place: ${el.name}`;
+      let p_rating = document.createElement("p");
+      p_rating.innerHTML = `Rating: ${el.rating}`;
+
+      let img = document.createElement("img");
+      img.style.width = "200px";
+      img.style.height = "200px";
+      img.src = el.image;
+
+      let btn = document.createElement("button");
+      btn.textContent = "Add to favorite";
+      btn.style.display = "block";
+
+      btn.onclick = function () {
+        addFav(el);
+      };
+
+      div.append(p_name, p_rating, img, btn);
+      parent.append(div);
+    });
+  }
+
+  function addFav(el) {
+    let arr;
+    let myfav;
+    myfav = localStorage.getItem("fav"); //this is first time visitor
+
+    if (myfav == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(localStorage.getItem("fav"));
+    } //array format conversion
+
+    arr.push(el);
+    console.log(arr);
+
+    localStorage.setItem("fav", JSON.stringify(arr));
+  }
+  function showFav() {
+    window.location.href = "/favorites.html";
+  }
+</script>

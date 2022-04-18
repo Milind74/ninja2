@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+      body {
+        font-weight: bolder;
+        font-size: 20px;
+      }
+      #div1 {
+        background-color: rgb(157, 247, 172);
+        margin: 20px;
+        padding: 10px;
+      }
+      #menu{
+          display: flex;
+          gap:40px;
+          height: 50px;
+          background-color: red;
+          width: 100%;
+      }
+      a{
+          text-decoration: none;
+          color: white;
+          margin-top: 10px;
+          margin-left: 50px;
+      }
+    </style>
+  </head>
+  <style></style>
+  <body>
+
+        <div id="menu">
+            <a href="sports.html">sports</a>
+            <a href="enter.html">entertainment</a>
+            <a href="technology.html">technology</a>
+
+        </div>
+    <h1 style="text-align: center; color: cadetblue">
+      ------Top 10 Headlines------
+    </h1>
+
+    <div id="data"></div>
+
+    <div id="buttons" style="width: 300px; margin: auto"></div>
+  </body>
+</html>
+
+<script>
+  //fetch the data
+
+  //show the button
+
+  var parent = document.getElementById("data");
+
+  async function getData() {
+    try {
+      let res = await fetch(
+        "https://newsapi.org/v2/top-headlines?country=in&apiKey=63b80961c020445a811e84b9ffb1db1b&pageSize=10"
+      );
+      var data = await res.json();
+      return data; //return data as a promise
+    } catch (e) {
+      console.log("e:", e);
+    }
+  }
+
+  var data;
+
+  async function main() {
+    data1 = await getData();
+    data = data1.articles;
+    console.log(data1);
+    data.forEach(function (el) {
+      let div = document.createElement("div");
+      div.setAttribute("id", "div1");
+      let p = document.createElement("p");
+      let p1 = document.createElement("p");
+      p.innerText = `Title: ${el.title}`;
+      p.style.textAlign = "center";
+      p1.innerText = `Description:${el.description}`;
+      p1.style.textAlign = "center";
+      div.append(p, p1);
+
+      parent.append(div);
+    });
+  }
+  main();
+
+  function showData() {}
+
+  showData();
+</script>

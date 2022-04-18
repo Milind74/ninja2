@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //getitem
+    //setitem
+    //removeitem
+    //clearitem
+    var value="milind"
+// localStorage.setItem('name','milind')
+
+localStorage.setItem('name2',value)//storing it set the item
+localStorage.setItem('name3',"abishek")//storing it set the item
+localStorage.setItem('name4',"abhijeet")//storing it set the item
+
+var mydata=localStorage.getItem('name2')//getting item
+
+localStorage.removeItem('name2')//remove item
+localStorage.removeItem('name')//remove item
+
+localStorage.clear()//clear it clears all data
+
+
+console.log(mydata)
+
+//array
+var arr=[1,2,3,4]
+localStorage.setItem('myArr',arr)
+var mydata1=localStorage.getItem('myArr')
+console.log("myData:",mydata1)
+
+
+//object
+
+var arr1={name:"milind"}
+localStorage.setItem('myArr1',arr1)
+var mydata2=localStorage.getItem('myArr1')
+console.log("myData2:",mydata2)
+document.body.append(mydata2)
+
+//not able to get value of object
+//so we will be using json
+var obj={
+    name:"raj",
+    age:24
+}
+var jsonObj=JSON.stringify(obj)//for converting object to json
+console.log('jsonObj:',jsonObj)
+var myobj=JSON.parse(jsonObj)//for getting back object from json
+console.log("myobj:",myobj)
+
+//object
+//so now we can get value
+
+var arr3=JSON.stringify({name:"milind anand"})//able to send data in json format
+localStorage.setItem('myArr3',arr3)
+var mydata3=localStorage.getItem('myArr3')
+
+//for getting back object from json
+console.log("mydata3:", JSON.parse(mydata3))//able to get it using object form
+
+
+
+
+
+ //api
+ //we need a database-api-get-json-object-dom
+ 
+
+
+ 
+
+
+</script>

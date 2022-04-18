@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatkal Booking System</title>
+</head>
+<body>
+    
+<h1>Tatkal Notification</h1>
+    <button onclick="check()" >Check</button>     
+
+</body>
+</html>
+
+<script>
+//1st step
+let BtoG = ['Avinash' , 'Abhishek', 'Milind', 'Raj', 'Piyush']
+let MtoG = ['Avinash' , 'Abhishek', 'Milind', 'Raj', 'Piyush']
+let PtoG = ['Avinash' , 'Abhishek', 'Milind', 'Raj', 'Piyush']
+
+async function check(){
+   
+    let promise = new Promise(function (resolve,reject){
+
+         setInterval(function (){
+        
+             if(BtoG.length<2){
+                 resolve('train 1 is available')
+                 clearInterval(interval)
+                 clearInterval(interval1);
+
+             }
+             else if(MtoG.length<2){
+                 resolve('train 2 is available')
+                 clearInterval(interval)
+                 clearInterval(interval1);
+
+             }
+             else if(PtoG.length<2){
+                 resolve('train 3 is available')
+                 clearInterval(interval)
+
+             }
+    },1000)
+    
+})
+
+    let res = await promise
+    console.log('res:',res)
+
+}
+function cancel (){
+
+    let cancel_speed1 = Math.ceil(Math.random()*3)
+    let cancel_speed2 = Math.ceil(Math.random()*5)
+    let cancel_speed3 = Math.ceil(Math.random()*1)
+
+    setTimeout(function (){
+        BtoG.pop()
+    },cancel_speed1*1000)
+    setTimeout(function (){
+        MtoG.pop()
+    },cancel_speed2*1000)
+    setTimeout(function (){
+        PtoG.pop()
+    },cancel_speed3*1000)
+    
+    BtoG.pop()
+    MtoG.pop()
+    PtoG.pop()
+    console.log('cancellation:',BtoG,MtoG,PtoG)
+   
+    console.log(`passenger available in BTOG trainm ${BtoG.length}`)
+    console.log(`passenger available in MTOG trainm ${MtoG.length}`)
+    console.log(`passenger available in PTOG trainm ${PtoG.length}`)
+
+
+
+}
+
+var interval = setInterval(cancel,2000)
+
+
+</script>

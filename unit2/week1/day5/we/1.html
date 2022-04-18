@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    label,input{
+        display: block;
+    }
+    #cont{
+        width: 1000px;
+        margin: auto;
+    }
+    #cont>div{
+        width: 500px; 
+        margin: 50x;
+        float: left;
+    }
+    #regform{
+        font-size: 24px;
+    }
+    #regform input{
+        border: 1px solid black;
+        width: 300px;
+        height:40px;
+        margin-top: 6px;
+        margin-bottom: 32px;
+    }
+    #regform input[value="Register"]{
+        background-color: black;
+        color: white;
+        font-size: 32px;
+        padding: 6px;
+        height: 50px;
+    }
+    #regform p{
+        color: red;
+        font-size: 20px;
+        margin-top: -20px;
+    }
+    #displayform{
+        background-color: black;
+        color: white;
+    }
+    #displayform>div{
+        padding: 30px 20px;
+    }
+    #displayform>div>p:nth-child(odd){
+
+        font-size: 30px;
+        margin-bottom: 6px;
+    }
+    #displayform>div>p:nth-child(even){
+
+        font-size: 34px;
+        margin-top: 4px;
+        margin-bottom: 20px;
+}
+#displayform>div>p:nth-child(2){
+    font-size: 48px;
+}
+
+</style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="cont">
+    <div id="regform">
+        <form>
+            <label for="name">name</label>
+            <input type="text"id="name">
+            <label for="email">email</label>
+            <input type="email"id="email">
+            <label for="password">password</label>
+            <input type="password"id="password">
+            <p>Enter a valid password</p>
+            <input type="submit"value="Register">
+        </form>
+    </div>
+    <div id="displayform">
+        <div>
+            <p>name</p>
+            <p>masai</p>
+            <p>email</p>
+            <p>milindanand74@gmail.com</p>
+            <p>mobile</p>
+            <p>6206039202</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

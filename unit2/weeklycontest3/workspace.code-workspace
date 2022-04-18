@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\..\\masaicourse"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Ninja2"
+	}
+}

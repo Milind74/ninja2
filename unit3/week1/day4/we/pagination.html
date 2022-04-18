@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Pagination</h1>
+    <div id="data"></div>
+    <div id="button"></div>
+</body>
+
+</html>
+
+<script>
+    // step1 - fetch the data
+    var data
+    var data_div = document.getElementById('data')
+    async function main() {
+        data = await fetchdata()
+            // console.log("data:", data);
+        showbutton(1)
+    }
+    main()
+
+    async function fetchdata() {
+        //error handling in async await
+        try {
+            let response = await fetch("http://jsonplaceholder.typicode.com/comments");
+            var data = await response.json();
+            return data
+                // console.log("data:", data);
+        } catch (e) {
+            console.log("e:", e);
+        } finally {
+            console.log('completed')
+        }
+    }
+
+
+    function showbutton(index) {
+        console.log('index:', index)
+        let btn_div = document.getElementById('button')
+        btn_div.innerHTML = null
+let original_id=index
+        if (index <= 6) {
+            index = 6
+        }
+
+        for (let i = index - 5; i <= index + 4; i++) {
+            let btn = document.createElement('button')
+            btn.innerText = i
+            btn.setAttribute('id', `${i}`)
+            btn.onclick = showdata
+            btn_div.appendChild(btn)
+        }
+        let btn1 =document.getElementById(original_id)
+        btn1.style.backgroundColor="green"
+    }
+
+    function showdata() {
+        let id = Number(this.id)
+        let num = id - 1
+        let page_data = data.slice(num * 10, ((num * 10) + 10))
+            console.log('page_data:', page_data)
+        data_div.innerHTML = null
+
+        page_data.forEach(function(el) {
+            let p = document.createElement('p')
+            p.innerText = `${el.id} ${el.name}`
+            data_div.appendChild(p)
+        })
+
+        showbutton(id)
+    }
+</script>
+ 
+
+

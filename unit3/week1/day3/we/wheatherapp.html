@@ -1,0 +1,58 @@
+<!-- input a city
+api Request
+show on data -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Name:<input type="text" id="city" />
+
+    <button onclick="getweatherData()">Get Data</button>
+
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  //api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
+  //aacbce661ce99bd7c73033d34058792d
+
+  let container = document.getElementById("container");
+
+  async function getweatherData() {
+    let city = document.getElementById("city").value;
+
+    try {
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=63db88b31fb0ae6cf662cc7774f6b6f0
+`
+      );
+
+     data = await res.json();
+      console.log(data)
+
+      shoeWeather(data);
+    } catch (e) {
+      console.log("e:", e);
+    }
+  }
+
+  function shoeWeather(d) {
+    let name = document.createElement("p");
+    name.innerText = `City-${d.name}`;
+
+    let temp = document.createElement("p");
+    temp.innerText = `Temp-${d.main.temp - 273} C`;
+
+    let humidity = document.createElement("p");
+    humidity.innerText = `Humidity-${d.main.humidity}`;
+
+    let pressure = document.createElement("p");
+    pressure.innerText = `Pressure-${d.main.pressure}`;
+
+    container.append(name, temp, humidity, pressure);
+  }
+</script>

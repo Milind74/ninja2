@@ -1,0 +1,47 @@
+<!-- let response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${input}&key=AIzaSyDUToanVtp6gPDMQVn6cqNwwgUSFijb5C4`) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="search">
+    <button onclick="searchVideos()">Search</button>
+    <div id="parent"></div>
+</body>
+</html>
+<script>
+    var parent = document.getElementById('parent');
+    async function searchVideos(){
+        var search = document.getElementById("search").value
+        try{
+            let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${search}&key=AIzaSyDUToanVtp6gPDMQVn6cqNwwgUSFijb5C4&maxResults=10`)
+            var {items} = await res.json();
+            console.log("items:",items)
+            items =items.filter(({id:{videoId}})=>{return videoId!=undefined})
+            appendVideos(items);
+        }
+        catch(e){
+            console.log("e:",e)
+        }
+    }
+
+    function appendVideos(videos){
+        parent.innerHTML = null
+
+        videos.forEach(({id:{videoId}})  => {
+
+            let div = document.createElement('div')
+            div.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            parent.append(div)
+        })
+
+    }
+
+    //"YouTube Data API v3 has not been used in project 189269488734 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtube.googleapis.com/overview?project=189269488734 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+</script>

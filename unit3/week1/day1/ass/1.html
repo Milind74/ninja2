@@ -1,0 +1,107 @@
+
+
+<!-- Problem
+Have you seen the McDonald's order notification display. Whenever your order is ready, it is displayed on the screen with your order number.
+Create a button called 'Order Food'
+When user clicks on order food, create a promise that will resolve after 5 seconds.
+Once the promise is resolved, show the image of the food in center and show order id on top right corner.
+create a navbar on top, showing name and details of your restaurant. refer to any restaurant website for that. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordering System</title>
+    <style>
+      body {
+        width: 90vw;
+        margin: auto;
+      }
+      #nav {
+        display: flex;
+        width: 90vw;
+        margin: auto;
+        background: red;
+      }
+      #output > p {
+        color: red;
+        font-size: 20px;
+        float: right;
+      }
+      #output > img {
+        margin-left: 20vw;
+      }
+       nav > div {
+display: block;
+margin:10px 50px;
+justify-content: center;
+      } 
+      #btn{
+        margin-top: 50px;
+        padding: 20px;
+        width: 100px;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <img
+        src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/v1591261933/NewWebsiteResource2020/Assets/Img/Logo.svg"
+        alt=""
+      />
+      <div>Delivery</div>
+      <div></div>
+        <img
+          src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/v1591261952/NewWebsiteResource2020/Assets/Img/Appstore.svg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          src="https://images.mcdelivery.co.in/hardcastle-restaurants-pvt-ltd/image/upload/v1591261944/NewWebsiteResource2020/Assets/Img/Playstore.svg"
+          alt=""
+        />
+      </div>
+      <div>Menu</div>
+      <div>Veg</div>
+      <div>Non-Veg</div>
+      <div>Drinks</div>
+      <div>Aboutus</div>
+    </nav>
+    <div id="btn">
+      <button id="button">Order Food</button>
+    </div>
+    <!-- <p id="para"></p> -->
+    <div id="output"></div>
+
+    <script>
+      window.addEventListener("load", pageSubmit);
+
+      function pageSubmit() {
+        var button = document.getElementById("button");
+        button.addEventListener("click", showOrder);
+      }
+
+      async function showOrder() {
+        // var p = document.getElementById("para");
+        // p.textContent = "your order will be available in 5 sec";
+        setTimeout(function () {
+          var orderNum = Math.floor(Math.random() * 1000);
+          var scr =
+            "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/assets/images/2_Pub_Food_Questions_574x384.jpg?$Publication_Two_Column_Desktop$";
+
+          var data = `
+          <p>${"Order Number : " + orderNum}</p>
+          <h2>${"Your Order Is Ready"}</h2>
+          <img src="${scr}"/> `;
+
+          document.getElementById("output").innerHTML = data;
+        }, 5000);
+      }
+      console.log(showOrder());
+    </script>
+  </body>
+</html>

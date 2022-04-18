@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            #layout{
+                display: grid;
+               grid-gap:25px;
+                grid-template: "box2 box2"
+                "box4 box5"
+                "box4 box6"
+                "box4 box7";
+            }
+            #box2{
+                height: 75px;
+                background-color: yellow;
+                grid-area: box2;
+            }
+            #box4{
+                height: 600px;
+                background-color: red;
+                grid-area: box4;
+            }
+            #box5{
+                height: 175px;
+                background-color: lightgreen;
+                grid-area: box5;
+            }
+            #box6{
+                height: 175px;
+                background-color: lightgreen;
+                grid-area: box6;
+            }
+            #box7{
+                height: 175px;
+                background-color: lightgreen;
+                grid-area: box7;
+            }
+            @media(max-width: 992px){
+                #layout{
+                    grid-template: "box2 box2"
+                    "box4 box5"
+                    "box4 box6"
+                    "box4 box7";
+                }
+            }
+            @media(max-width: 768px){
+                #layout{
+                    grid-template: "box2 box2 box2"
+                    "box4 box4 box4"
+                    "box5 box6 box7"
+                    "box5 box6 box7"
+                    "box5 box6 box7";
+                }
+            }
+            @media(max-width: 600px){
+                #layout{
+                    grid-template: "box2"
+                    "box4"
+                    "box5"
+                    "box6"
+                    "box7";
+                }
+            }
+        </style>
+    </head>
+    <body>
+       
+        <div id="layout">
+            <div id="box2">Navigation</div>
+            <div id="box4">left box</div>
+            <div id="box5">right box1</div>
+            <div id="box6">right box2</div>
+            <div id="box7"> right box3</div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

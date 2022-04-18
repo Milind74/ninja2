@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .srikethrough {
+      text-decoration: line-through;
+      color: green;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 40% 30% 30%;
+      width: 40%;
+      grid-gap: 10px;
+    }
+    .grid > button {
+      height: 40px;
+      width: 100px;
+    }
+    .tasks {
+      margin-top: 50px;
+    }
+    body {
+      display: flex;
+    }
+    #box1 {
+      width: 60%;
+    }
+    #box2 {
+      width: 20%;
+    }
+    .para1 {
+      font-size: 30px;
+    }
+  </style>
+  <body>
+    <div id="box1">
+      Type a task: <input id="task1" />
+      <button id="button">SUBMIT</button>
+      <button id="button1">TOGGLE</button>
+
+      <div class="tasks">
+        <p class="para"></p>
+      </div>
+    </div>
+    <div id="box2">
+      <p class="para1"></p>
+      <p id="para2"></p>
+
+    </div>
+  </body>
+</html>
+<script>
+  function task(n) {
+    this.name_of_task = n;
+    this.date = new Date().getDay();
+    this.status = "false";
+  }
+
+  var button = document.getElementById("button");
+  button.addEventListener("click", update);
+
+  var id = 0;
+  var tasks_no = 0;
+  function update() {
+    var input = document.getElementById("task1").value;
+    var para = document.querySelector(".para");
+    document.getElementById("task1").value = "";
+    var task1 = new task(input);
+    console.log(task1)
+    para.append("Task name:-", input, " ", "Day:-", task1.date );
+    var tasks_div = document.querySelector(".tasks");
+    var div = document.createElement("div");
+    div.setAttribute("class", "grid");
+    id++;
+    tasks_no++;
+    div.innerHTML = `<p id=${id}>${para.innerHTML}</p><button onclick=Done(${id})>Done</button>
+    <button onclick=remove(${id})>remove</button>`;
+    tasks_div.appendChild(div);
+    para.innerHTML = "";
+    var para1 = document.querySelector(".para1");
+    para1.textContent = "Total Tasks:-" + tasks_no;
+
+    var para2= document.getElementById("para2")
+    para2.append( "status:-", task1.status)
+    
+  }
+
+  function Done(id) {
+    var p = document.getElementById(id);
+    p.setAttribute("class", "srikethrough");
+  }
+
+  function remove(id) {
+    tasks_no--;
+    var para1 = document.querySelector(".para1");
+    para1.textContent = "Total Tasks:-" + tasks_no;
+    var p = document.getElementById(id);
+    var parent = p.parentElement;
+    parent.remove();
+  }
+  var button1 = document.getElementById("button1");
+  button1.addEventListener("click", toggle_task);
+  
+  function toggle_task() {
+    var status= document.getElementById("para2");
+    console.log(status);
+    if (status.textContent == "true") {
+      status.textContent = "false";
+    } else {
+      status.textContent = "true";
+    }
+    console.log(status.textContent);
+  }
+
+</script>

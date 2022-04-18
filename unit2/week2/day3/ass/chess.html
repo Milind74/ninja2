@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #container{
+         display: none;
+         grid-template-columns: repeat(8,70px);
+         grid-template-rows: repeat(8,70px);
+
+        }
+        .black{
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+        }
+        .white{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <button>click</button>
+</body>
+<script>
+    var btn=document.querySelector('button')
+    function itemclick(){
+            event.target.style.border="1px solid red"
+    }
+    function generateboard(){
+        var parent=document.getElementById("container")
+        for(i=0;i<8;i++){
+            for(j=0;j<8;j++){
+            var child=document.createElement('div')
+            child.textContent=(i*8)+j+1
+            if(i%2==0){
+            if(j%2==0){
+                child.setAttribute('class','white')
+            }
+            else{
+                child.setAttribute('class','black')
+            }
+          }
+        else{
+            if(j%2==0){
+                child.setAttribute('class','black')
+            }
+            else{
+                child.setAttribute('class','white')
+            }
+        }
+            child.addEventListener("click",itemclick)
+            parent.append(child)
+        }
+    }
+            parent.style.display="grid"
+    }
+        btn.addEventListener('click',generateboard)
+
+    
+
+</script>
+</html>

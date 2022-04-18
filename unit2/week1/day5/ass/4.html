@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        #head{
+            width: 1200px;
+            height: 500px;
+            background-color: rgb(29, 37, 37);
+            margin: auto;
+        }
+        #head>.part1{
+            width: 800px;
+            height: 80px;
+            margin: auto;
+            text-align: center;
+            padding: 80px;
+            /* font-size: 20px; */
+            color: white;
+        }
+        #head>.part1>h1:nth-child(1){
+            font-size: 30px;
+        }
+       
+        
+        .data>div{
+            width:300px;
+            height: 80px;
+            float: left;
+            
+        }
+        label,input{
+            width: 200px;
+            padding: 10px;
+            margin-left: 20px;
+            border-radius: 10px;
+        }
+        div>input[type="submit"] {
+                background-color: green;
+                color: white;
+                font-size: 12px;
+                float: left;
+                margin-top: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                width: 220px;
+            }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div class="part1">
+            <h1>Get started for free- join the millions of developers already
+                using GitHub to share their code, work together, and build 
+                amazing things.
+            </h1>
+        </div>
+        <div class="data">
+            <div>
+                <form>
+                    <label for="name">Username</label><br>
+                    <input id="name" type="text" placeholder="Pick a username"/>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <label for="name">Email</label><br>
+                    <input id="name" type="text" placeholder="Your email address"/>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <label for="name">Password</label><br>
+                    <input id="password" type="password" placeholder="Create a Password"/>
+                </form>
+            </div>
+            <div>
+                <input type="submit" value="Sign up for GitHub" />
+            </div>  
+           
+            
+         </div>
+         <div class="part1">
+            <p>By clicking "Sign up for GitHub", you agree to our <a href="#">terms of servises</a>
+                and <a href="#">privacy statement</a> . We'll occasionally send you account
+                related emails.
+                </p>
+        </div> 
+    </div>
+    
+</body>
+</html>

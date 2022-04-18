@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+
+</style>
+    <title>Document</title>
+</head>
+<body>
+    <select id = "continent_select">
+    <option value = "India">India</option>  
+    <option value = "United States of America">usa</option>    
+    <option value = "Australia">America</option>    
+</select>
+<button onclick="continent()">find continent</button>
+<script>
+    function continent(){
+        var parent=document.getElementById("continent_select").value
+    switch(parent)     {
+        case "India":{
+            alert("the continent is asia")
+            break;
+        }
+        case "United States of America":{
+            alert("the continent is america")
+            break;
+        }
+        case "Australia":{
+            alert("the continent is austri")
+            break;
+        }
+    }   
+    }
+</script>
+</body>
+</html>

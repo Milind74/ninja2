@@ -1,0 +1,11 @@
+var mytable= 13
+console.log(mytable*1)
+console.log(mytable*2)
+console.log(mytable*3)
+console.log(mytable*4)
+console.log(mytable*5)
+console.log(mytable*6)
+console.log(mytable*7)
+console.log(mytable*8)
+console.log(mytable*9)
+console.log(mytable*10)
