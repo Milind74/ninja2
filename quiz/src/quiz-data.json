@@ -1,0 +1,18 @@
+[
+    {
+        "category":"Entertainment",
+        "type":"multipe",
+        "difficulty":"hard",
+        "question":"what is react?",
+        "correct_answer":"library",
+        "incorrect_answer":["framework","backend library", "java library"]
+    },
+    {
+        "category":"Entertainment",
+        "type":"multipe",
+        "difficulty":"hard",
+        "question":"what is js?",
+        "correct_answer":"javaScript",
+        "incorrect_answer":["jasa","jdsa", "java stdio"]
+    }
+]
